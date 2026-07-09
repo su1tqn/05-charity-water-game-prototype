@@ -7,11 +7,11 @@
   --cw-red: #F5402C;
   --cw-dark-green: #159A48;
   --cw-pink: #F16061;
-
-  --dark-bg: #12131c;
-  --light-bg: #f7f7f7;
-  --white: #ffffff;
-  --text-dark: #1f1f1f;
+  
+  --cw-black: #1A1A1A;
+  --cw-white: #ffffff;
+  --cw-cream: #FFF7E1;
+  --cw-gray: #CBCCD1;
 }
 
 body {
@@ -39,17 +39,66 @@ body {
 
 .game-header {
   text-align: center;
+  margin-bottom: 18px;
+}
+
+.logo-strip {
+  border: 3px solid var(--cw-yellow);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.main-logo {
+  width: 320px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: var(--cw-white);
+  border: 2px solid var(--cw-light-blue);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.title-can {
+  width: 46px;
+  height: auto;
+  flex-shrink: 0;
 }
 
 .game-header h1 {
-  margin-bottom: 8px;
-  color: var(--cw-yellow);
-  text-shadow: 1px 1px 0 var(--text-dark);
+  margin: 0 0 6px;
+  color: var(--cw-black);
+  font-size: 2rem;
 }
 
 .game-header p {
-  font-size: 0.95rem;
+  margin: 0;
+  color: var(--cw-black);
   line-height: 1.4;
+}
+
+.game-footer {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--cw-black);
+}
+
+.small-logo {
+  width: 90px;
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin: 0 auto 8px;
 }
 
 .stats {
