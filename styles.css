@@ -1,15 +1,170 @@
-/* Charity: water Brand Colors
+:root {
+  --cw-yellow: #FFC907;
+  --cw-blue: #2E9DF7;
+  --cw-light-blue: #8BD1CB;
+  --cw-green: #4FCB53;
+  --cw-orange: #FF902A;
+  --cw-red: #F5402C;
+  --cw-dark-green: #159A48;
+  --cw-pink: #F16061;
 
-Primary Colors:
-- Yellow:     #FFC907
-- Blue:       #2E9DF7
+  --dark-bg: #12131c;
+  --light-bg: #f7f7f7;
+  --white: #ffffff;
+  --text-dark: #1f1f1f;
+}
 
-Secondary Colors:
-- Light Blue: #8BD1CB
-- Green:      #4FCB53
-- Orange:     #FF902A
-- Red:        #F5402C
-- Dark Green: #159A48
-- Pink:       #F16061
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--dark-bg);
+  color: var(--white);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
 
-*/
+.game-container {
+  width: 100%;
+  max-width: 500px;
+  background: var(--light-bg);
+  color: var(--text-dark);
+  border: 4px solid var(--cw-yellow);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.game-header {
+  text-align: center;
+}
+
+.game-header h1 {
+  margin-bottom: 8px;
+  color: var(--cw-yellow);
+  text-shadow: 1px 1px 0 var(--text-dark);
+}
+
+.game-header p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.stat-card {
+  background: var(--white);
+  border: 2px solid var(--cw-light-blue);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.stat-card span {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.stat-card strong {
+  font-size: 1.3rem;
+}
+
+#startButton {
+  width: 100%;
+  border: none;
+  background: var(--cw-yellow);
+  color: var(--text-dark);
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+#startButton:hover {
+  background: var(--cw-orange);
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.tile {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 6px;
+  background: #34364f;
+  color: var(--text-dark);
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.tile:hover {
+  transform: scale(1.03);
+}
+
+.tile.revealed {
+  background: #e8f9ff;
+  border: 2px solid var(--cw-blue);
+}
+
+.tile.safe {
+  color: var(--cw-blue);
+}
+
+.tile.polluted {
+  background: var(--cw-red);
+  color: var(--white);
+}
+
+.message,
+.fact-box {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+.message {
+  background: #e8f9ff;
+  border: 2px solid var(--cw-blue);
+}
+
+.fact-box {
+  background: #fff4c2;
+  border: 2px solid var(--cw-yellow);
+}
+
+@media (max-width: 420px) {
+  .game-container {
+    padding: 14px;
+  }
+
+  .game-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .stats {
+    gap: 6px;
+  }
+
+  .stat-card {
+    padding: 8px;
+  }
+
+  .tile {
+    font-size: 0.9rem;
+  }
+}
