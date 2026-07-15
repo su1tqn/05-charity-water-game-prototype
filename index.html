@@ -20,20 +20,29 @@
       </p>
     </header>
 
+    <div class="difficulty-section">
+      <label for="difficulty">Choose Difficulty:</label>
+      <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="normal" selected>Normal</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
+
     <section class="stats">
       <div class="stat-card">
-        <span>Safe Tiles</span>
-        <strong id="safeCount">0</strong>
+        <span>Water Found</span>
+        <strong id="safeCount">--</strong>
       </div>
 
       <div class="stat-card">
         <span>Lives</span>
-        <strong id="livesCount">3</strong>
+        <strong id="livesCount">--</strong>
       </div>
 
       <div class="stat-card">
         <span>Time</span>
-        <strong id="timer">50</strong>
+        <strong id="timer">--</strong>
       </div>
     </section>
 
@@ -48,6 +57,23 @@
     <p id="factBox" class="fact-box">
       Clean water changes everything.
     </p>
+
+    <footer class="game-footer">
+      <p>
+        Learn more about how charity: water helps bring clean and safe water to communities.
+      </p>
+
+      <div class="footer-links">
+        <a href="https://www.charitywater.org/" target="_blank">
+          Visit charity: water
+        </a>
+
+        <a href="https://www.charitywater.org/donate" target="_blank">
+          Donate
+        </a>
+      </div>
+    </footer>
+
   </main>
 
   <script src="script.js"></script>

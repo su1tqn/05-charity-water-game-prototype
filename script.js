@@ -6,13 +6,16 @@ const livesCountDisplay = document.getElementById("livesCount");
 const timerDisplay = document.getElementById("timer");
 const message = document.getElementById("message");
 const factBox = document.getElementById("factBox");
+const difficultySelect = document.getElementById("difficulty");
 
 // Game settings that will be important
 const rows = 6;
 const cols = 6;
-const pollutedCount = 6;
 const totalTiles = rows * cols;
-const totalSafeTiles = totalTiles - pollutedCount;
+
+let pollutedCount = 6;
+let totalSafeTiles = totalTiles - pollutedCount;
+
 const startingLives = 3;
 const startingTime = 50;
 
@@ -31,13 +34,39 @@ const facts = [
   "Clean water can help families spend less time collecting water and more time building their future."
 ];
 
+// Difficulty Level 
+const difficultySettings = {
+  easy: {
+    lives: 4,
+    time: 50,
+    polluted: 5
+  },
+
+  normal: {
+    lives: 3,
+    time: 40,
+    polluted: 7
+  },
+
+  hard: {
+    lives: 2,
+    time: 30,
+    polluted: 9
+  }
+};
+
 // Start or restart the game
 function startGame() {
+  const selectedDifficulty = difficultySelect.value;
+  const settings = difficultySettings[selectedDifficulty];
+
   board = [];
-  lives = startingLives;
+  lives = settings.lives;
   safeFound = 0;
-  timeLeft = startingTime;
+  timeLeft = settings.time;
   gameOver = false;
+  pollutedCount = settings.polluted;
+  totalSafeTiles = totalTiles - pollutedCount;
 
   startButton.textContent = "Restart Game";
   message.textContent = "Game started! Tap a tile to search for clean water.";
@@ -135,6 +164,7 @@ function renderBoard() {
     tile.classList.add("tile");
 
     if (board[i].revealed) {
+      tile.disabled = true;
       tile.classList.add("revealed");
 
       if (board[i].polluted) {
@@ -180,7 +210,7 @@ function handleTileClick(index) {
     if (board[index].nearby > 0) {
       message.textContent = `${board[index].nearby} polluted drop(s) nearby. Be careful.`;
     } else {
-      message.textContent = "Safe water found!";
+      message.textContent = "Clean water found!";
     }
 
     showFactAtMilestone();
@@ -264,5 +294,18 @@ function celebrateWin() {
   }, 1000);
 }
 
+// Get selected difficulty properties and then updates the DOM
+function updateDifficultyPreview() {
+  const selectedDifficulty = difficultySelect.value;
+  const settings = difficultySettings[selectedDifficulty];
+
+  safeCountDisplay.textContent = 0;
+  livesCountDisplay.textContent = settings.lives;
+  timerDisplay.textContent = settings.time;
+
+  message.textContent = `${selectedDifficulty} mode selected. Click Start Game when ready.`;
+}
+
 // Start button event
 startButton.addEventListener("click", startGame);
+difficultySelect.addEventListener("change", updateDifficultyPreview)
