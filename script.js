@@ -60,6 +60,8 @@ function startGame() {
   const selectedDifficulty = difficultySelect.value;
   const settings = difficultySettings[selectedDifficulty];
 
+  difficultySelect.disabled = true;
+
   board = [];
   lives = settings.lives;
   safeFound = 0;
@@ -264,6 +266,7 @@ function checkWin() {
 function endGame(playerWon, finalMessage) {
   gameOver = true;
   clearInterval(timerInterval);
+  difficultySelect.disabled = false;
   message.textContent = finalMessage;
 
   if (playerWon) {
@@ -303,7 +306,7 @@ function updateDifficultyPreview() {
   livesCountDisplay.textContent = settings.lives;
   timerDisplay.textContent = settings.time;
 
-  message.textContent = `${selectedDifficulty} mode selected. Click Start Game when ready.`;
+  message.textContent = `${selectedDifficulty} mode selected!`;
 }
 
 // Start button event
