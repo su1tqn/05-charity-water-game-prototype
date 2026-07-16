@@ -29,9 +29,9 @@ let timerInterval = null;
 
 // Clean water facts to stimulate better UX
 const facts = [
-  "Clean water helps kids stay healthy and stay in school.",
-  "Many communities around the world still do not have reliable access to clean water.",
-  "Clean water can help families spend less time collecting water and more time building their future."
+  "💧 Clean water helps kids stay healthy and stay in school.",
+  "🌍 Many communities around the world still do not have reliable access to clean water.",
+  "⏱️ Clean water can help families spend less time collecting water and more time building their future."
 ];
 
 // Difficulty Level 
@@ -70,9 +70,9 @@ function startGame() {
   pollutedCount = settings.polluted;
   totalSafeTiles = totalTiles - pollutedCount;
 
-  startButton.textContent = "Restart Game";
-  message.textContent = "Game started! Tap a tile to search for clean water.";
-  factBox.textContent = "Clean water changes everything.";
+  startButton.textContent = "🔄 Restart Game";
+  message.textContent = "Game started! Tap a tile to search for 💧clean water. ";
+  factBox.textContent = "✨ Clean water changes everything. ✨";
 
   createBoard();
   placePollutedTiles();
@@ -201,18 +201,18 @@ function handleTileClick(index) {
 
   if (board[index].polluted) {
     lives--;
-    message.textContent = "Polluted water hit. You lost 1 life.";
+    message.textContent = "⚠️ Polluted water hit. You lost 1 life.";
 
     if (lives === 0) {
-      endGame(false, "You ran out of lives. The water source was polluted.");
+      endGame(false, "💔 You ran out of lives. The water source was polluted.");
     }
   } else {
     safeFound++;
 
     if (board[index].nearby > 0) {
-      message.textContent = `${board[index].nearby} polluted drop(s) nearby. Be careful.`;
+      message.textContent = `👀 ${board[index].nearby} polluted drop(s) nearby. Be careful! `;
     } else {
-      message.textContent = "Clean water found!";
+      message.textContent = "💧 Clean water found!";
     }
 
     showFactAtMilestone();
@@ -239,7 +239,7 @@ function startTimer() {
     updateStats();
 
     if (timeLeft <= 0) {
-      endGame(false, "Time is up. Try again to protect the water source.");
+      endGame(false, "⏰ Time is up. Try again to protect the water source.");
     }
   }, 1000);
 }
@@ -258,7 +258,7 @@ function showFactAtMilestone() {
 // Check if the player won
 function checkWin() {
   if (safeFound === totalSafeTiles) {
-    endGame(true, "You protected the community water source!");
+    endGame(true, "🏆 You protected the community water source!");
   }
 }
 
@@ -270,7 +270,7 @@ function endGame(playerWon, finalMessage) {
   message.textContent = finalMessage;
 
   if (playerWon) {
-    factBox.textContent = "You won! Clean water can change a whole community.";
+    factBox.textContent = "🎊 You won! Clean water can change a whole community! 🌍💚 ";
     celebrateWin();
   } else {
     revealPollutedTiles();
@@ -306,7 +306,13 @@ function updateDifficultyPreview() {
   livesCountDisplay.textContent = settings.lives;
   timerDisplay.textContent = settings.time;
 
-  message.textContent = `${selectedDifficulty} mode selected!`;
+  if (selectedDifficulty === "easy") {
+    message.textContent = "😊 Easy mode selected! You have more lives and time.";
+  } else if (selectedDifficulty === "normal") {
+    message.textContent = "😎 Normal mode selected! A balanced challenge.";
+  } else if (selectedDifficulty === "hard") {
+    message.textContent = "💀 Hard mode selected! Fewer lives and less time.";
+  } 
 }
 
 // Start button event

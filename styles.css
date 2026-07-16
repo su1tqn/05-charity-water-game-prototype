@@ -7,17 +7,17 @@
   --cw-red: #F5402C;
   --cw-dark-green: #159A48;
   --cw-pink: #F16061;
-  
+
   --dark-bg: #2E9DF7;
-  --light-bg: #ffffff;
   --white: #ffffff;
+  --light-bg: #fffaf0;
   --text-dark: #1A1A1A;
 }
 
 body {
   margin: 0;
-  font-family: Arial, Helvectia, sans-serif;
-  background: var(--dark-bg);
+  font-family: "Proxima Nova", Avenir, Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, var(--cw-blue), var(--cw-light-blue));
   color: var(--white);
   min-height: 100vh;
   display: flex;
@@ -65,10 +65,12 @@ body {
 }
 
 .game-header h1 {
-  font-family: Baskerville, Georgia, "Times New Roman", serif; 
+  font-family: Georgia, "Times New Roman", serif;
   margin: 0 0 6px;
   color: var(--cw-black);
   font-size: 2rem;
+  font-weight: bold;
+
 }
 
 .game-header p {
@@ -124,14 +126,16 @@ body {
   background: var(--cw-yellow);
   color: var(--text-dark);
   font-weight: bold;
-  padding: 12px;
+  padding: 15px;
   border-radius: 10px;
   cursor: pointer;
-  margin-bottom: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: background 0.3s ease;
 }
 
 #startButton:hover {
-  background: var(--cw-orange);
+    background: var(--cw-orange);
 }
 
 .game-board {
@@ -175,6 +179,7 @@ body {
   padding: 12px;
   border-radius: 10px;
   font-size: 0.95rem;
+  text-align: -webkit-center;
 }
 
 .message {
@@ -187,27 +192,7 @@ body {
   border: 2px solid var(--cw-yellow);
 }
 
-@media (max-width: 420px) {
-  .game-container {
-    padding: 14px;
-  }
 
-  .game-header h1 {
-    font-size: 1.5rem;
-  }
-
-  .stats {
-    gap: 6px;
-  }
-
-  .stat-card {
-    padding: 8px;
-  }
-
-  .tile {
-    font-size: 0.9rem;
-  }
-}
 
 .difficulty-section {
   display: flex;
@@ -272,8 +257,31 @@ body {
   font-weight: bold;
   padding: 6px 10px;
   border-radius: 6px;
+  transition: background 0.3s ease;
 }
 
 .footer-links a:hover {
   background: var(--cw-orange);
+}
+
+@media (max-width: 420px) {
+  .game-container {
+    padding: 14px;
+  }
+
+  .game-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .stats {
+    gap: 6px;
+  }
+
+  .stat-card {
+    padding: 8px;
+  }
+
+  .tile {
+    font-size: 0.9rem;
+  }
 }
